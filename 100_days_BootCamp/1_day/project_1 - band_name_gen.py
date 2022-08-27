@@ -19,3 +19,7 @@ band_name = city_name + " " + pet_name
 
 #5. Make sure the input cursor shows on a new line, see the example at:
 print (f"A good name for your band would be {band_name}")
+
+'''
+
+'''

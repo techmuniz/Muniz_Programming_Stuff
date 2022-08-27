@@ -46,6 +46,7 @@ while people.isnumeric() == False:
 else:
     print (people)
 
+
 #Final calculations
 individual_tip = (int(bill)/int(people))*(int(tip)/100)
 total_payment = (int(bill)/int(people)) + individual_tip
