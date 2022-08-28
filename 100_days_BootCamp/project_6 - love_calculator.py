@@ -17,12 +17,12 @@ total_name2lovecount = name2_lowercase.count ("l") + name2_lowercase.count("o") 
 total_true = total_name1truecount + total_name2truecount
 total_love = total_name1lovecount + total_name2lovecount
 
-result_in_str = {str(total_true)+str(total_love)}
+result_in_str = str(total_true)+str(total_love)
+result_in_int = int(result_in_str)
 
-
-
-print (f"Total 'True' numbers in first name is {total_name1truecount}, and for the second name is {total_name2truecount},\n combining a total or {total_true}.")
-print (f"Total 'Love' number in first name is {total_name1lovecount}, and for the second name is {total_name2lovecount}, \n combining a total of {total_love}")
-
-
-print (f"Your score is {result_in_str} in string, and X in int.")
+if result_in_int < 10 or result_in_int > 90:
+    print (f"Your score is {result_in_int}, you go together like coke and mentos.")
+elif result_in_int >= 40 and result_in_int <= 50:
+    print (f"Your score is {result_in_int}, you are alright together.")
+else:
+    print (f"Your score is {result_in_int}.")
