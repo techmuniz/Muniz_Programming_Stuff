@@ -1,24 +1,26 @@
 
 import random
-from random import randint, randrange
+from random import randint
 
 # 🚨 Don't change the code below 👇
-test_seed = int(input("Create a seed number: "))
-random.seed(test_seed)
-
 # Split string method
 names_string = input("Give me everybody's names, separated by a comma. ")
 names = names_string.split(", ")
 # 🚨 Don't change the code above 👆
 
+
 #Write your code below this line 👇
 
-num_items = len(names)
+# Goal: Whoever's name is print, pays the bill.
 
-#Generate random numbers between 0 and the last index. 
-random_choice = random.randint(0, num_items - 1)
+# 1º Step - Create a variable with the lenght of the variable with the names
+a1 = len(names)
 
-#Pick out random person from list of names using the random number.
-person_who_will_pay = names[random_choice]
+# 2º - Step - Shuffle those numbers
+randomchoise = randint(0, a1 -1)
 
-print(person_who_will_pay + " is going to buy the meal today!")
+# 3º Step - Create a variable that will use that random number generated before
+paying_name = names[randomchoise]
+
+# 4º Step - Print the number of the lucky one
+print (f"The lucky one this time is {paying_name}")
