@@ -1,6 +1,4 @@
-# Comparar quem ganhou ou perdeu
-# Fazer o computador gerar uma resposta aleatória para ele
-
+from random import randint
 rock = '''
     _______
 ---'   ____)
@@ -28,29 +26,52 @@ scissors = '''
 ---.__(___)
 '''
 
-'''def numbervalidation (number):
+#def to check if the number is int, if not, keep on trying
+def checkint (number):
     while True:
-        try:
-            answer = int(input(number))
+        try: 
+            resp = int(input(number)) #The number that the user has to input is intenger, of not, it will give the bellow error.
         except ValueError:
-            print("You need to choose a valid number!")
+            print("Invalid Number") #This one
             continue
         else:
-            print (answer)
-            break'''
+            return resp
+            break # In the case of there's no error, then its done.
 
-
-
-
-print ("welcome to the worlds most famous 'Hand' game!")
-
+print ("Welcome to the game!")
 
 while True:
-    try:
-        choice =  int(input("Please, choose a number that you would like to play:\n1 - Rock\n2 - Paper\n3 - Scissors\nYour answer: "))
-    except ValueError:
-        print("You need to choose a valid number!")
+    usuario = checkint("Which one do you choose?\n1 - Rock\n2 - Paper\n3 - Scissors?\nYour answer: ")
+    if usuario < 0 or usuario > 4:
         continue
     else:
-        print (choice)
         break
+
+computer = randint(1, 3)
+
+if computer == 1:
+    computer = rock
+elif computer == 2:
+    computer = paper    
+elif computer == 3:
+    computer = scissors
+
+if usuario == 1:
+    usuario = rock
+elif usuario == 2:
+    usuario = paper
+elif usuario == 3:
+    usuario = scissors    
+
+print (f"You choice {usuario}\nComputer's choice {computer}")
+
+
+if computer == rock and usuario == rock or computer == paper and usuario == paper or computer == scissors or usuario == scissors:
+    print ("It is a drawn!")
+elif computer == rock and usuario == paper or usuario == rock and computer == paper:
+    print ("Rock vs Paper = Paper Wins!")
+elif computer == rock and usuario == scissors or computer == scissors and usuario == rock:
+    print ("Rock vs Scissors = Rock Wins!")
+elif computer == paper and usuario == scissors or computer == scissors and usuario == paper:
+    print ("Paper vs Scissors = Scissors Wins!")
+
