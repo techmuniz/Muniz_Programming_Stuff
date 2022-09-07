@@ -14,9 +14,10 @@ def check_int_123(number):
                 number = int(input("Type a valid number: "))
         except ValueError:
             print ("Please enter a valid number.")
-            
-            
-            
-choice1 = int(input("What's your choice? 1, 2 or 3?\n"))
 
-check_int_123(choice1)
+
+def same_initial(wd1, wd2):
+        """Tests if two words start with the same character,  
+        and returns True/False. Case distinction is ignored.""" 
+        if wd1[0].lower() == wd2[0].lower(): 
+            return True
