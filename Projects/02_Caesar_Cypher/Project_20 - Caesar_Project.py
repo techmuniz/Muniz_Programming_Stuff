@@ -1,50 +1,63 @@
 
 
-#TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
+# Caesar Cipher
 
-    #TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount and print the encrypted text.  
-    #e.g. 
-    #plain_text = "hello"
-    #shift = 5
-    #cipher_text = "mjqqt"
-    #print output: "The encoded text is mjqqt"
-
-    ##HINT: How do you get the index of an item in a list:
-    #https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-in-a-list
-
-    ##🐛Bug alert: What happens if you try to encode the word 'civilization'?🐛
-
-#TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message. 
+from base64 import decode
 
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-#direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
 def encrypt (text, shift):
-    temp_list = []                                                              # Create a list do transform the input text into a list of separeted characters.
+    tempList = []                                                              # Create a list do transform the input text into a list of separeted characters.
     for letter in text:
-        temp_list.append(letter)
+        tempList.append(letter)
     
-    encoded_list = []                                                           # Create the list that is going to be used the encripted code
-    for letter in temp_list:
+    encodedList = []                                                            # Create the list that is going to be used the encripted code
+    for letter in tempList:
         if letter is not " ":                                                   # If not a blank space, find the chosen letter in the alphabet list, using index;
             position = alphabet.index(letter)                                   
             indexNumberFuture = position + shift                                # Create the index that it will become by sum up with the "shift";
             encriptedLetter= alphabet[indexNumberFuture]                        
-            for letter in encriptedLetter:                                      # Add that new encriptedLetter in the encoded_list;
-                encoded_list.append(letter)
+            for letter in encriptedLetter:                                      # Add that new encriptedLetter in the encodedList;
+                encodedList.append(letter)
         else:                                                                   # Exception created for the black space
-            encoded_list.append(letter)
+            encodedList.append(letter)
     
-    encodedWords = "".join(encoded_list)                                        # Transform the list into a string
+    encodedWords = "".join(encodedList)                                         # Transform the list into a string
 
     print (encodedWords)                                                        # The result is a encoded phrase
+def decrypt (text, shift):                                                              
+    tempList1 = []                                                              # Create a list do transform the input text into a list of separeted characters.   
+    for letter in text:
+        tempList1.append(letter)
+    #print(tempList)
+
+    decodeList = []                                                             # Create the list that is going to be used the decrypted code
+    for letter in tempList1:
+        if letter is not " ":                                                   # If not a blank space, find the chosen letter in the alphabet list, using index;
+            position = alphabet.index(letter)
+            indexFuture = position - shift                                      # Create the index that it will become by sum up with the "shift";
+            decryptedLetter = alphabet [indexFuture]
+            for letter in decryptedLetter:                                      # Add that new decryptedLetter in the decodeList;
+                decodeList.append(letter)
+        else:
+            decodeList.append(letter)
+    decodedWords = "".join(decodeList)                                          # Transform the list into a string
+
+    print (decodedWords)
+
+if direction == "encode":
+    encrypt(text, shift)
+elif direction == "decode":
+    decrypt(text, shift)
 
 
-'''def encrypt (plainText, shiftNumber):
+''' # Teacher's solution
+def encrypt (plainText, shiftNumber):
 
     cipherText = ""
 
@@ -55,4 +68,3 @@ def encrypt (text, shift):
         cipherText += newLetter 
     print(cipherText)       
 '''
-encrypt(text, shift)
