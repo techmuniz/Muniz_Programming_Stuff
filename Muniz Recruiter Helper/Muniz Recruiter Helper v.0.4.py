@@ -2,6 +2,7 @@ import pyautogui
 import keyboard
 import cv2
 
+
 #Zoom da tela configurado em 90% - meia tela
 
 
