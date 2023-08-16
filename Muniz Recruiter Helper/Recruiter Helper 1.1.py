@@ -10,8 +10,8 @@ class GUIApp(QMainWindow):
         super().__init__()
 
         self.user_keys = {
-            "Ocultar Perfil do Candidato": "",
             "Salvar Perfil no Projeto": "",
+            "Ocultar Perfil do Candidato": "",
             "Candidato Anterior": "",
             "Candidato Seguinte": "",
             "Exibir Mais Experiências": ""
@@ -35,11 +35,7 @@ class GUIApp(QMainWindow):
             layout.addWidget(key_input)
             key_input.textChanged.connect(lambda text, action=action: self.update_key(action, text))
 
-        self.reset_button = QPushButton("Resetar Teclas")
-        self.reset_button.clicked.connect(self.reset_keys)
-        layout.addWidget(self.reset_button)
-
-        self.start_button = QPushButton("Iniciar Automação")
+        self.start_button = QPushButton("Iniciar/Pausar Automação")
         self.start_button.clicked.connect(self.toggle_automation)
         layout.addWidget(self.start_button)
 
@@ -50,17 +46,15 @@ class GUIApp(QMainWindow):
     def update_key(self, action, key):
         self.user_keys[action] = key
 
-    def reset_keys(self):
-        for action in self.user_keys:
-            self.user_keys[action] = ""
-
     def toggle_automation(self):
         if not self.is_automation_running:
             self.is_automation_running = True
+            self.start_button.setText("Pausar Automação")
             self.automation_thread = threading.Thread(target=self.start_automation_thread)
             self.automation_thread.start()
         else:
             self.is_automation_running = False
+            self.start_button.setText("Iniciar/Pausar Automação")
 
     def start_automation_thread(self):
         while self.is_automation_running:
