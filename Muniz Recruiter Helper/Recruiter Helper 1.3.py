@@ -17,7 +17,7 @@ class GUIApp(QMainWindow):
             "Hide Candidate Profile": "",
             "Previous Candidate": "",
             "Next Candidate": "",
-            "Show More Experience": ""
+            #"Show More Experience": ""
         }
 
         self.is_automation_running = False
@@ -142,12 +142,12 @@ class GUIApp(QMainWindow):
             self.scroll_and_process_Next_Previous("Next Candidate")
             #print("Candidato Seguinte")
 
-        elif action == "Show More Experience":
+        '''elif action == "Show More Experience":
             self.process_image("Muniz Recruiter Helper/Images/Show More80.png")
             self.process_image("Muniz Recruiter Helper/Images/Show More90.png")
             self.process_image("Muniz Recruiter Helper/Images/Show More100.png")
             self.process_image("Muniz Recruiter Helper/Images/Show More110.png")
-            print("Show More Experience")
+            print("Show More Experience")'''
 
     def scroll_and_process(self, action_name):
         """Scroll and process based on the action."""
@@ -193,7 +193,7 @@ class GUIApp(QMainWindow):
     def process_image(self, image_path):
         """Process an image and perform a click action if found on screen."""
         image = cv2.imread(image_path)
-        coordinates = pyautogui.locateOnScreen(image, confidence=0.8)
+        coordinates = pyautogui.locateOnScreen(image, confidence=0.65)
         if coordinates:
             x, y, width, height = coordinates
             
