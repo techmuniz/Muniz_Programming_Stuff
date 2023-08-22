@@ -6,6 +6,8 @@ import threading
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QGridLayout, QWidget, QMessageBox
 from PyQt5.QtGui import QFont
 from PyQt5.QtGui import QColor
+import os
+import sys
 
 class GUIApp(QMainWindow):
 
@@ -25,10 +27,14 @@ class GUIApp(QMainWindow):
         self.color_not_started = QColor(255, 255, 204)  # Light cream
         self.color_started = QColor(144, 238, 144)   # Light Green
 
+        # Obtendo o diretório do script em execução
+        self.script_directory = os.path.dirname(os.path.abspath(__file__))
+        # Construindo o caminho completo para a pasta "Images"
+        self.images_directory = os.path.join(self.script_directory, "Images")  # Corrigido aqui
+
         self.init_ui()
 
     def init_ui(self):
-        """Initialize the user interface."""
         self.setWindowTitle("Muniz Recruiter Helper")
 
         layout = QGridLayout()
@@ -58,7 +64,7 @@ class GUIApp(QMainWindow):
         self.setCentralWidget(container)
 
         self.setStyleSheet("""
-            background-color: #F0F0F0; /* Background color */
+            background-color: #F0F0F0;
             QLabel { color: #333333; font-size: 14px; }
             QLineEdit { background-color: #FFFFFF; color: #333333; border: 1px solid #CCCCCC; padding: 8px; font-size: 12px; }
             QPushButton {
@@ -75,18 +81,15 @@ class GUIApp(QMainWindow):
         """)
 
     def update_key(self, action, key):
-        """Update the user-configured keybinding for a specific action."""
         if self.validate_key(key):
             self.user_keys[action] = key
         else:
             self.show_key_warning()
 
     def validate_key(self, key):
-        """Validate that a keybinding consists of a single letter or number."""
         return len(key) == 1 and (key.isalpha() or key.isnumeric())
 
     def show_key_warning(self):
-        """Show a warning message when an invalid keybinding is entered."""
         warning_box = QMessageBox()
         warning_box.setIcon(QMessageBox.Warning)
         warning_box.setWindowTitle("Aviso")
@@ -94,7 +97,6 @@ class GUIApp(QMainWindow):
         warning_box.exec_()
 
     def toggle_automation(self):
-        """Toggle the automation process."""
         if not self.is_automation_running:
             self.is_automation_running = True
             self.start_button.setText("Pause Automation")
@@ -109,7 +111,6 @@ class GUIApp(QMainWindow):
             print("Automation Paused.")
 
     def start_automation_thread(self):
-        """Start the thread for automation."""
         try:
             while self.is_automation_running:
                 for action, key in self.user_keys.items():
@@ -125,7 +126,6 @@ class GUIApp(QMainWindow):
             self.show_user_feedback(f"Automation Error: {str(e)}")
 
     def perform_action(self, action):
-        """Perform a specific action based on the user's keybinding."""
         if action == "Hide Candidate Profile":
             self.scroll_and_process("Hide Candidate Profile")
 
@@ -133,87 +133,73 @@ class GUIApp(QMainWindow):
             self.scroll_and_process("Save in Project")
 
         elif action == "Previous Candidate":
-            #self.process_image("Muniz Recruiter Helper/Images/Candidato Anterior.png") -- Old Way
             self.scroll_and_process_Next_Previous("Previous Candidate")
-            #print("Candidato Anterior")
 
         elif action == "Next Candidate":
-            #self.process_image("Muniz Recruiter Helper/Images/Candidato Seguinte.png") -- Old Way
             self.scroll_and_process_Next_Previous("Next Candidate")
-            #print("Candidato Seguinte")
 
         elif action == "Show More Experience":
-            self.process_image("Muniz Recruiter Helper/Images/Show More80.png")
-            self.process_image("Muniz Recruiter Helper/Images/Show More90.png")
-            self.process_image("Muniz Recruiter Helper/Images/Show More100.png")
-            self.process_image("Muniz Recruiter Helper/Images/Show More110.png")
+            self.process_image("Show More80.png")
+            self.process_image("Show More90.png")
+            self.process_image("Show More100.png")
+            self.process_image("Show More110.png")
             print("Show More Experience")
 
     def scroll_and_process(self, action_name):
-        """Scroll and process based on the action."""
         pyautogui.scroll(4000)
         time.sleep(0.5)
         pyautogui.scroll(4000)
         time.sleep(0.5)
 
-        self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}80.png")
-        self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}90.png")
-        self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}100.png")
-        self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}110.png")
-        self.process_image("Muniz Recruiter Helper/Images/NextCandidadeSingle.png")
+        self.process_image(f"{action_name.lower()}80.png")
+        self.process_image(f"{action_name.lower()}90.png")
+        self.process_image(f"{action_name.lower()}100.png")
+        self.process_image(f"{action_name.lower()}110.png")
+        self.process_image("NextCandidadeSingle.png")
         print(f"{action_name}")
 
     def scroll_and_process_Next_Previous(self, action_name):
-        """Scroll and process based on the action."""
         pyautogui.scroll(4000)
         time.sleep(0.5)
         pyautogui.scroll(4000)
         time.sleep(0.5)
 
-        previous_processed = True  # Flag to track if the previous image was processed successfully
+        previous_processed = True
         
-        if not self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}80.png"):
+        if not self.process_image(f"{action_name.lower()}80.png"):
             previous_processed = False
             
-        if previous_processed and not self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}90.png"):
+        if previous_processed and not self.process_image(f"{action_name.lower()}90.png"):
             previous_processed = False
             
-        if previous_processed and not self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}100.png"):
+        if previous_processed and not self.process_image(f"{action_name.lower()}100.png"):
             previous_processed = False
             
-        if previous_processed and not self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}110.png"):
+        if previous_processed and not self.process_image(f"{action_name.lower()}110.png"):
             previous_processed = False
 
         if previous_processed:
             print(f"{action_name} Profile")
 
-        # Different from the previous function scroll_and_process, here we have to process the time just one time,
-        # otherwise we would be processing the same image more than one time, and this would make us skip some profiles.
+    def process_image(self, image_filename):
 
-    def process_image(self, image_path):
-        """Process an image and perform a click action if found on screen."""
-        image = cv2.imread(image_path)
-        coordinates = pyautogui.locateOnScreen(image, confidence=0.8)
-        if coordinates:
-            x, y, width, height = coordinates
-            
-            # Calculating the new X coordinate closer to the center (20% towards the center)
-            x_center = x + int(width * 0.2)
-            y_center = y + (height // 2)  # Keeping the same Y coordinate for vertical center
-            
-            # Performing the click at the new coordinate
-            pyautogui.click(x_center, y_center)
+        # Usando o caminho completo para a imagem
+        full_image_path = os.path.join(self.images_directory, image_filename)
+        image = cv2.imread(full_image_path)
+        if image is not None:
+            coordinates = pyautogui.locateOnScreen(image, confidence=0.8)
+            if coordinates:
+                x, y, width, height = coordinates
+                x_center = x + int(width * 0.2)
+                y_center = y + (height // 2)
+                pyautogui.click(x_center, y_center)
+            else:
+                print(f"Image not found: {image_filename}")
+                print("Coordinates:", coordinates)
         else:
-            print(f"Image not found: {image_path}")
-            # Print the coordinates for debugging
-            print("Coordinates:", coordinates)
-                  
-            # It was necessary to make this adjustment (not click in the center of the image) because if the click was performed in 
-            # the center, when we wanted to save the profile in the project, the click was performed in the "Show more options" button, 
-            # but the profile was not saved.
+            print(f"Error loading image: {image_filename}")
 
     def edit_keys(self):
-        """Edit user-configured keybindings."""
         print("\nEditando teclas:")
         for action in self.user_keys:
             key_input = QLineEdit()
@@ -222,7 +208,6 @@ class GUIApp(QMainWindow):
                 self.user_keys[action] = new_key
 
     def show_user_feedback(self, message):
-        """Show user feedback using a message box."""
         feedback_box = QMessageBox()
         feedback_box.setIcon(QMessageBox.Information)
         feedback_box.setWindowTitle("Feedback")
