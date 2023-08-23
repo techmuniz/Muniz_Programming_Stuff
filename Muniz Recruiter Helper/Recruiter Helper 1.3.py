@@ -198,7 +198,7 @@ class GUIApp(QMainWindow):
             x, y, width, height = coordinates
             
             # Calculating the new X coordinate closer to the center (20% towards the center)
-            x_center = x + int(width * 0.2)
+            x_center = x + int(width * 0.4)
             y_center = y + (height // 2)  # Keeping the same Y coordinate for vertical center
             
             # Performing the click at the new coordinate
