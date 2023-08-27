@@ -161,6 +161,8 @@ class GUIApp(QMainWindow):
         self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}100.png")
         self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}110.png")
         self.process_image("Muniz Recruiter Helper/Images/NextCandidadeSingle.png")
+        time.sleep(0.5)
+        self.process_image(f"Muniz Recruiter Helper/Images/Down100.png")
         print(f"{action_name}")
 
     def scroll_and_process_Next_Previous(self, action_name):
