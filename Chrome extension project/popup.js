@@ -1,11 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const button = document.getElementById('clickButton');
-    const targetButton = document.querySelector('.save-to-pipeline__button'); // Seleciona o botão com a classe específica
-  
-    button.addEventListener('click', function() {
-      if (targetButton) {
-        targetButton.click(); // Simula o clique no botão
-      }
-    });
+document.getElementById('clickButton').addEventListener('click', function() {
+  chrome.scripting.executeScript({
+    function: findAndClickButton,
   });
-  
+});
+
+function findAndClickButton() {
+  // Encontrar e clicar no botão "Hide 1 candidate"
+  const button = document.querySelector('button:contains("Hide 1 candidate")');
+  if (button) {
+    button.click();
+  }
+}
