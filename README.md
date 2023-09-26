@@ -1,4 +1,4 @@
-Whenever we are sourcing candidates in LinkedIn Recruiter Projects, we have 3 options we when open a profile:
+Whenever we are sourcing candidates in LinkedIn Recruiter's Projects, we have 3 options we when open a profile:
 
 - Save candidate -> Move to the next candidate
 - Hide candidate -> Move to the next candidate
