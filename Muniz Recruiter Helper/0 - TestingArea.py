@@ -15,9 +15,9 @@ class GUIApp(QMainWindow):
         self.user_keys = {
             "Save in Project": "",
             "Hide Candidate Profile": "",
-            "Previous Candidate": "",
-            "Next Candidate": "",
-            #"Show More Experience": ""
+            #"Previous Candidate": "",
+            #"Next Candidate": "",
+            "Show More Experience": ""
         }
 
         self.is_automation_running = False
@@ -131,22 +131,19 @@ class GUIApp(QMainWindow):
         elif action == "Save in Project":
             self.scroll_and_process("Save in Project")
 
+        elif action == "Show More Experience":
+            self.process_image("Muniz Recruiter Helper/Images/Show More80.png")
+            print("Show More Experience")
+
+        '''
+        -----------> These functions can be implemented if needed. Remember to also unlock def scroll_and_process....
         elif action == "Previous Candidate":
-            #self.process_image("Muniz Recruiter Helper/Images/Candidato Anterior.png") -- Old Way
             self.scroll_and_process_Next_Previous("Previous Candidate")
             #print("Candidato Anterior")
 
         elif action == "Next Candidate":
-            #self.process_image("Muniz Recruiter Helper/Images/Candidato Seguinte.png") -- Old Way
             self.scroll_and_process_Next_Previous("Next Candidate")
-            #print("Candidato Seguinte")
-
-        '''elif action == "Show More Experience":
-            self.process_image("Muniz Recruiter Helper/Images/Show More80.png")
-            self.process_image("Muniz Recruiter Helper/Images/Show More90.png")
-            self.process_image("Muniz Recruiter Helper/Images/Show More100.png")
-            self.process_image("Muniz Recruiter Helper/Images/Show More110.png")
-            print("Show More Experience")'''
+            #print("Candidato Seguinte")'''
 
     def scroll_and_process(self, action_name):
         """Scroll and process based on the action."""
@@ -156,15 +153,15 @@ class GUIApp(QMainWindow):
         time.sleep(0.5)
 
         self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}80.png")
-        self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}90.png")
-        self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}100.png")
-        self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}110.png")
+
         self.process_image("Muniz Recruiter Helper/Images/NextCandidadeSingle.png")
         time.sleep(0.5)
+
         self.process_image(f"Muniz Recruiter Helper/Images/Down100.png")
+
         print(f"{action_name}")
 
-    def scroll_and_process_Next_Previous(self, action_name):
+    '''def scroll_and_process_Next_Previous(self, action_name):
         """Scroll and process based on the action."""
         pyautogui.scroll(4000)
         time.sleep(0.5)
@@ -189,12 +186,12 @@ class GUIApp(QMainWindow):
             print(f"{action_name} Profile")
 
         # Different from the previous function scroll_and_process, here we have to process the time just one time,
-        # otherwise we would be processing the same image more than one time, and this would make us skip some profiles.
+        # otherwise we would be processing the same image more than one time, and this would make us skip some profiles.'''
 
     def process_image(self, image_path):
         """Process an image and perform a click action if found on screen."""
         image = cv2.imread(image_path)
-        coordinates = pyautogui.locateOnScreen(image, confidence=0.65)
+        coordinates = pyautogui.locateOnScreen(image, confidence=0.8)
         if coordinates:
             x, y, width, height = coordinates
             
@@ -225,7 +222,7 @@ class GUIApp(QMainWindow):
     def show_user_feedback(self, message):
         """Show user feedback using a message box."""
         feedback_box = QMessageBox()
-        feedback_box.setIcon(QMessageBox.Information)
+        feedback_box.setIcon(QMessageBox.Informatio1n)
         feedback_box.setWindowTitle("Feedback")
         feedback_box.setText(message)
         feedback_box.exec_()
