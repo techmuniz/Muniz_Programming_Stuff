@@ -1,4 +1,20 @@
-Just a little tool I created to save myself from doing a thousand clicks per day.
+Whenever were are sourcing candidates in LinkedIn Recruiter Projects, we have 3 options we when open a profile:
+
+- Save candidate -> Move to the next candidate
+- Hide candidate -> Move to the next candidate
+- Activate the 'Show More' experience button
+
+What is this tool for?
+
+Automate those steps using a script.
+
+How?
+
+You assign an Alphanumeric key to each of those steps, and the script will find do all the clicking for you.
+
+Technically speaking:
+
+I use OpenCV to find the respective buttons image in the active page, once it founds, it clicks on it. Simple as that.
 
 
 Known Bugs:
