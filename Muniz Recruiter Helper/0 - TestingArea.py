@@ -21,7 +21,6 @@ class GUIApp(QMainWindow):
         }
 
         self.is_automation_running = False
-
         self.color_not_started = QColor(255, 255, 204)  # Light cream
         self.color_started = QColor(144, 238, 144)   # Light Green
 
