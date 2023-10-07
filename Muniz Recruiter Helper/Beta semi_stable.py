@@ -1,3 +1,6 @@
+# In this version I have hidden a couple of functions so I can focus only in the 3 main functionalities - Save to Project / Hide from Project / Show more experience
+
+
 import pyautogui
 import keyboard
 import cv2
@@ -232,3 +235,4 @@ if __name__ == "__main__":
     window = GUIApp()
     window.show()
     app.exec_()
+
