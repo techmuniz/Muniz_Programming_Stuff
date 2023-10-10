@@ -1,54 +1,22 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-int main(){
-
-/*
-Comando simples de entrada e saída de dados:
-
-        int idade;
-        printf("Digite a idade: \n");
-        scanf("%d", &idade);
-        printf("A idade digitada foi = %d", idade);
-
-        
-        float senha;
-        printf("Digite a senha: \n");
-        scanf("%f", &senha);
-        printf("A senha digitada foi %f", senha);
-*/
-
-        char nome;
-        printf("Digite seu nome: \n");
-        scanf("%c", &nome);
-        printf("Seu nome eh: %c", nome);
-
-
-}
-
-
-
-// <comentário>
-/* 
 Regras para criação de identificadores:
-       - Nunca começa com número
-       - Case sensitive no C
+        Nunca começa com número
+        Case sensitive no C
 
-Constantes variaveis e tipos de dados
-           8 tipos primitivos:
-               char - texto
-               int - inteiros
-               float - decimais
-               double - decimal (precis�o dupla)
-               bool - V / F
-               enum - dados enumerados
-               void - ausência de tipo/valor
-               pointer - localização de memória
+<Constantes variaveis e tipos de dados>
+        8 tipos primitivos:
+        char - texto
+        int - inteiros
+        float - decimais
+        double - decimal (precis�o dupla)
+        bool - V / F
+        enum - dados enumerados
+        void - ausência de tipo/valor
+        pointer - localização de memória
 
 Modificadores de dados:
-              unsigned - Não terá sinal
-              short - reduz capacidade de armazenamento
-              long - aumenta a capacidade de armazenamento
+        unsigned - Não terá sinal
+        short - reduz capacidade de armazenamento
+        long - aumenta a capacidade de armazenamento
 
 Palavras Reservadas:
          int, float, double, void, bool, char, enum
@@ -58,8 +26,8 @@ Palavras Reservadas:
          typedef, struct, union
 
 Variáveis
-         - Valores armazenados em memória, permite ser alterado
-         - Possui sempre UM TIPO e UM NOME
+        Valores armazenados em memória, permite ser alterado
+        Possui sempre UM TIPO e UM NOME
 
 Sintaxe de criação de variável:
         <tipo> <identificador>
@@ -81,16 +49,15 @@ Sintaxe para criação de constante:
 Atribui��o:
            Opera��o para armazenar ou alterar o conte�do de uma vari�vel
            Em linguagem C, usa-se o simbolo "igual":
-              <vari�vel> = <valor>;
+              <variável> = <valor>;
               
 Express�es e operadores l�gicos ---
-
-+ Soma 
-- Subtra��o 
-* Multiplica��o
-/ Divis�o
-% M�dulo (resto da divis�o)
-() Prioridade
+        + Soma 
+        - Subtra��o 
+        * Multiplica��o
+        / Divis�o
+        % M�dulo (resto da divis�o)
+        () Prioridade
               
 
 Operadores relacionais:
@@ -192,3 +159,8 @@ Caracteres especiais para utilizar em textos (dentro das aspas duplas)
 
 
  */
+
+
+
+
+
