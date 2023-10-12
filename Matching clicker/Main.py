@@ -94,14 +94,8 @@ while True:
                 print('Clicking Submit Button')
                 wait(6)
 
-                # Clicking on next candidate
-                next_button_location = locate_element('Matching clicker/Img/next_button.png')
-                if next_button_location:
-                    click_at(*next_button_location)
-                    print ('Clicking Next Button')
-                    wait(1)
-                else:
-                    print("'Next Button' Not found")
+                click_at(1437, 788)
+
             else:
                 print("Botão 'Submit' não encontrado.")
         else:
@@ -114,5 +108,5 @@ while True:
 
 
 
-                # click_at(1234, 839)
+                # 
 # 749, 839
