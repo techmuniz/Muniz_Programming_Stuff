@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 
 # Função para localizar um elemento na tela usando uma imagem de referência
-def locate_element(image_path, confidence_threshold=0.4):
+def locate_element(image_path, confidence_threshold=0.35):
     screen_width, screen_height = pyautogui.size()
     screenshot = pyautogui.screenshot(region=(0, 0, screen_width, screen_height))
     screenshot = np.array(screenshot)
@@ -57,7 +57,7 @@ while True:
             # Etapa 3: Clicar no botão "Discard"
             click_at(*discard_button_location)
             print('Clicking Discard Button')
-            wait(1)
+            wait(0.5)
 
             # Etapa 4: Localizar a opção "Missing Technical Skills"
             missing_skills_location = locate_element('Matching clicker/Img/missing_skills_option.png')
@@ -69,13 +69,23 @@ while True:
                 # Etapa 5: Localizar o botão "Submit"
                 submit_button_location = locate_element('Matching clicker/Img/submit_button.png')
                 if submit_button_location:
-                    # Etapa 6: Clicar no botão "Submit"
                     click_at(*submit_button_location)
                     print('Clicking Submit Button')
                     wait(6)
+                    
+                    # Etapa 6: Locate DDP button
+                    ddp_button_location = locate_element('Matching clicker/Img/ddp_button.png')
+                    if ddp_button_location:
+                        click_at(*ddp_button_location)
+                        print('Clicking ddp Button')
+                        wait(6)
 
-                    click_at(1437, 788)
 
+
+
+                    #click_at(1936, 842)
+                    else:
+                        print("Botão 'ddp' não encontrado.")
                 else:
                     print("Botão 'Submit' não encontrado.")
             else:
@@ -85,9 +95,9 @@ while True:
     elif pressed_key == second_key:
         print("Performing alternate action...")
         # Alternate Action 1: Click at empty screen
-        click_at(2441, 595)
+        click_at(2466, 838)
         # Alternate Action 2: Click at selection box
-        click_at(974, 789)
+        click_at(1446, 838)
         # Alternate Action 3: Locate "Request Job Interest" button and click
         request_interest_location = locate_element('Matching clicker/Img/request_interest_button.png')
         if request_interest_location:
@@ -99,7 +109,7 @@ while True:
         if send_correspondence_location:
             click_at(*send_correspondence_location)
             print('Clicking Send Correspondence Button')
-            wait(3)
-            click_at(1437, 788)
+            wait(4)
+            click_at(1936, 842)
     else:
         print("Press the assigned keys to start the script or perform alternate action.")
