@@ -18,3 +18,6 @@ Some functions only work when the browser zoom is at 100%.
 Rarely (probably 1 out of 50 times), the program saves the "Similar Profiles" on the side instead of the current candidate on the screen.
 If you try to insert more than one letter as a key, it will break the program.
 The program will probably break if you do something you shouldn't do :D
+
+
+**I'm also developing a script with similar properties for our internal Turing ATS - the "Matching" project**
