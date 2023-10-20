@@ -3,7 +3,7 @@
 // Professor: Pietro Martins de Oliveira
 // Description: sum two numbers and show result
 // Author: Paulo R. Muniz
-// Current date: 10/09/2023
+// Current date: 10/18/2023
 
 
 

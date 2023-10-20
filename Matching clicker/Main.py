@@ -94,7 +94,7 @@ while True:
                 print('Clicking Submit Button')
                 wait(6)
 
-                click_at(2046, 843)
+                click_at(1962, 871)
 
             else:
                 print("Botão 'Submit' não encontrado.")

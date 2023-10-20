@@ -3,7 +3,7 @@
 // Professor: Pietro Martins de Oliveira
 // Description: Gather & Show Data
 // Author: Paulo R. Muniz
-// Current date: 10/09/2023
+// Current date: 10/19/2023
 
 #include <stdio.h>
 #include <stdlib.h>
