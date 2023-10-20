@@ -1,4 +1,3 @@
-
 // Discipline: C Language
 // Professor: Pietro Martins de Oliveira
 // Description: Show number before and after
