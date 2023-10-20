@@ -1,6 +1,9 @@
 
-
-
+// Discipline: C Language
+// Professor: Pietro Martins de Oliveira
+// Description: sum two numbers and show result
+// Author: Paulo R. Muniz
+// Current date: 10/09/2023
 
 
 
@@ -8,18 +11,15 @@
 #include <stdlib.h>
 
 int main() {
-     int valor1 = 10;
-     int valor2 = 15;
-     int resultado;
+     float value1, value2, result;
      
-     // resultado aqui vai ser 25
-     resultado = valor1 + valor2;
-     
-     printf("O valor resultado eh %d \n", resultado);
-     
-     // resultado vai assumir 25 -3 = 22
-     resultado = resultado - 3;
+     printf("Input the first number:\n");
+     scanf("%f", &value1);
 
-     printf("O valor resultado eh %d \n", resultado);
-return 0;	
+     printf("Input the second number:\n");
+     scanf("%f", &value2);
+
+     result = (value1 + value2);
+
+     printf("The result is %.2f", result);
 }

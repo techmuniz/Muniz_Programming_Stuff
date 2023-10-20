@@ -17,10 +17,10 @@ int main()
     printf ("Digite a quantidade de meses do investimento:\n");
     scanf("%d", &periodo);
 
-    printf ("Digite o percentual de rendimento ao mês:\n");
+    printf ("Digite o percentual de rendimento ao mÃªs:\n");
     scanf("%f", &percentualRendimento);
 
-    /// Primeiro, criei um contador (i), e declarei as variáveis que usei durante o script
+    /// Primeiro, criei um contador (i), e declarei as variï¿½veis que usei durante o script
     int i = 0;
     float saldoAtualizado = valorInvestido;
     float lucro;
@@ -28,21 +28,21 @@ int main()
     float imposto;
 
 
-    /// Poderia ter usado a estrutura FOR, porém quis tentar fazer usando a While
-    /// Aqui, a lógica é que enquanto o contador (i) não for igual ao número de meses que foi inserido, o script continua sendo executado
+    /// Poderia ter usado a estrutura FOR, porÃ©m quis tentar fazer usando a While
+    /// Aqui, a lï¿½gica ï¿½ que enquanto o contador (i) nï¿½o for igual ao nï¿½mero de meses que foi inserido, o script continua sendo executado
     while (i < periodo)
     {
         i = (i + 1);
         saldoAtualizado = saldoAtualizado + (saldoAtualizado * percentualRendimento/100);
-        printf ("Depois do mês %d terá = R$%.2f\n", i, saldoAtualizado);            
+        printf ("Depois do mÃªs %d terÃ¡ = R$%.2f\n", i, saldoAtualizado);            
 
-        /// Após o contador (i) atingir o periodo informado, essa estrutura para de ser executada
+        /// Apï¿½s o contador (i) atingir o periodo informado, essa estrutura para de ser executada
         if (i == periodo) {
             break;
         }
     }
 
-    /// Abaixo de cada variável, coloquei uma função printf() para testar se o conteudo estava correto.
+    /// Abaixo de cada variï¿½vel, coloquei uma funÃ§Ã£o printf() para testar se o conteudo estava correto.
     lucro = saldoAtualizado - valorInvestido;
     ///printf("Lucro: %.2f\n", lucro);
 
@@ -52,5 +52,5 @@ int main()
     saldoFinal = saldoAtualizado - imposto;
     ///printf("Saldo final: %.2f\n", saldoFinal);
 
-    printf("O valor do saldo atualizado é de: R$%.2f. Após dedução de 15%% em cima do lucro do rendimento, o valor final fica em R$%.2f", saldoAtualizado, saldoFinal);
+    printf("O valor do saldo atualizado Ã© de: R$%.2f. ApÃ³s deduÃ§Ã£o de 15%% em cima do lucro do rendimento, o valor final fica em R$%.2f", saldoAtualizado, saldoFinal);
 }
