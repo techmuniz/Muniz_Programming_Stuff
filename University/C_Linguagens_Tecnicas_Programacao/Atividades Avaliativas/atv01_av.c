@@ -5,7 +5,7 @@
 int main() 
 
 {
-    setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "Portuguese_Brazil");
 
     float valorInvestido = 0;
     int periodo = 0;
@@ -28,21 +28,21 @@ int main()
     float imposto;
 
 
-    /// Poderia ter usado a estrutura FOR, porém quis tentar fazer usando a While, pois não sei qual vai ser o valor do i.
-    /// Aqui, a lógica é que enquanto o contador (i) não for igual ao número de meses que foi inserido, o script continua sendo executado
+    /// Poderia ter usado a estrutura FOR, porém quis tentar fazer usando a While
+    /// Aqui, a l�gica � que enquanto o contador (i) n�o for igual ao n�mero de meses que foi inserido, o script continua sendo executado
     while (i < periodo)
     {
         i = (i + 1);
         saldoAtualizado = saldoAtualizado + (saldoAtualizado * percentualRendimento/100);
         printf ("Depois do mês %d terá = R$%.2f\n", i, saldoAtualizado);            
 
-        /// Após o contador (i) atingir o periodo informado, essa estrutura para de ser executada
+        /// Ap�s o contador (i) atingir o periodo informado, essa estrutura para de ser executada
         if (i == periodo) {
             break;
         }
     }
 
-    /// Abaixo de cada variável, coloquei uma função printf() para testar se o conteudo estava correto.
+    /// Abaixo de cada vari�vel, coloquei uma função printf() para testar se o conteudo estava correto.
     lucro = saldoAtualizado - valorInvestido;
     ///printf("Lucro: %.2f\n", lucro);
 
