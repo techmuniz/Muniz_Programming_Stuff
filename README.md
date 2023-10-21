@@ -1,3 +1,7 @@
+Here we got a few personal projects & some exercises that I like to play with.
+
+Regarding projects, there's one called Muniz Recruiter Helper (Lack of better name). Why I created?
+
 Whenever we are sourcing candidates in LinkedIn Recruiter's Projects, we have three options when we open a profile:
 
 **Save candidate** -> Move to the next candidate
