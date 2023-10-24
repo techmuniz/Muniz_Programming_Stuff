@@ -225,7 +225,7 @@ class GUIApp(QMainWindow):
     def show_user_feedback(self, message):
         """Show user feedback using a message box."""
         feedback_box = QMessageBox()
-        feedback_box.setIcon(QMessageBox.Informatio1n)
+        feedback_box.setIcon(QMessageBox.Information)
         feedback_box.setWindowTitle("Feedback")
         feedback_box.setText(message)
         feedback_box.exec_()
