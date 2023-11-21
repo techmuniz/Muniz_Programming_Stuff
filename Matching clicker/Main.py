@@ -104,9 +104,5 @@ while True:
         print("Botão 'Discard' não encontrado.")
 
 
-
-
-
-
                 # 
 # 749, 839
