@@ -156,6 +156,10 @@ class GUIApp(QMainWindow):
         time.sleep(0.5)
 
         self.process_image(f"Muniz Recruiter Helper/Images/{action_name.lower()}80.png")
+        time.sleep(0.5)
+
+        self.process_image(f"Muniz Recruiter Helper/Images/confirm.png")
+        time.sleep(0.5)
 
         self.process_image("Muniz Recruiter Helper/Images/NextCandidadeSingle.png")
         time.sleep(0.5)

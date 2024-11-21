@@ -2,18 +2,19 @@ import tkinter as tk
 from tkinter import simpledialog, scrolledtext, messagebox
 import pyperclip
 import json
+from tkinter.colorchooser import askcolor
 
 def load_data():
     try:
         with open("save_data.json", "r") as f:
             data = json.load(f)
-            # Certificar-se de que todas as chaves necessárias existam
-            for key in ("texts", "button_texts", "counters"):
+            # Ensure that all required keys exist
+            for key in ("texts", "button_texts", "counters", "button_colors", "button_bg_colors"):
                 if key not in data:
                     data[key] = []
             return data
     except FileNotFoundError:
-        return {"texts": [], "button_texts": [], "counters": []}
+        return {"texts": [], "button_texts": [], "counters": [], "button_colors": [], "button_bg_colors": []}
 
 ui_texts = {
     "copy": "Copy Text",
@@ -31,7 +32,7 @@ ui_texts = {
 
 def edit_box_size(text_widgets):
     new_width = simpledialog.askinteger("Size", "Enter the new width:", minvalue=10, maxvalue=200)
-    if new_width:  # Se o usuário inseriu um valor, ajuste a largura das caixas de texto
+    if new_width:
         for text_widget in text_widgets:
             text_widget.config(width=new_width)
 
@@ -61,6 +62,13 @@ def edit_counter(counter):
             counter["label"].config(text=str(new_count))
     except (TypeError, ValueError):
         messagebox.showerror(ui_texts["invalid_input"], ui_texts["enter_valid_number"])
+
+def choose_button_color(button):
+    _, fg_color = askcolor(title="Choose a Text Color")  # Get the selected text color
+    if fg_color:
+        _, bg_color = askcolor(title="Choose a Background Color")  # Get the selected background color
+        if bg_color:
+            button.config(fg=fg_color, bg=bg_color)  # Apply the colors to the button
 
 def create_text_boxes_and_buttons(container, num_boxes, saved_data):
     text_widgets = []
@@ -93,7 +101,15 @@ def create_text_boxes_and_buttons(container, num_boxes, saved_data):
         status_label.pack(fill='both', expand=True)
 
         button_text = ui_texts["copy"] if i >= len(saved_data["button_texts"]) else saved_data["button_texts"][i]
-        copy_button = tk.Button(cmd_frame, text=button_text, command=lambda tw=text_field, c=counter, sm=status_message: copy_text_to_clipboard(tw, c, sm))
+        button_color = "black"
+        button_bg_color = "lightgray"
+        if i < len(saved_data["button_colors"]):
+            button_color = saved_data["button_colors"][i]
+        if i < len(saved_data["button_bg_colors"]):
+            button_bg_color = saved_data["button_bg_colors"][i]
+
+        copy_button = tk.Button(cmd_frame, text=button_text, fg=button_color, bg=button_bg_color,
+                                command=lambda tw=text_field, c=counter, sm=status_message: copy_text_to_clipboard(tw, c, sm))
         copy_button.pack(fill=tk.X)
         copy_buttons.append(copy_button)  # Add this button to the list for later reference
 
@@ -103,13 +119,18 @@ def create_text_boxes_and_buttons(container, num_boxes, saved_data):
         clear_button = tk.Button(cmd_frame, text=ui_texts["clear"], command=lambda tw=text_field, c=counter: clear_text(tw, c))
         clear_button.pack(fill=tk.X)
 
+        color_button = tk.Button(cmd_frame, text="Choose Color", command=lambda btn=copy_button: choose_button_color(btn))
+        color_button .pack(fill=tk.X)
+
     return text_widgets, copy_buttons, counters
 
 def save_data(text_widgets, copy_buttons, counters):
     data = {
         "texts": [tw.get("1.0", tk.END).strip() for tw in text_widgets],
         "button_texts": [btn.cget("text") for btn in copy_buttons],
-        "counters": [c["value"] for c in counters]
+        "counters": [c["value"] for c in counters],
+        "button_colors": [btn.cget("fg") for btn in copy_buttons],
+        "button_bg_colors": [btn.cget("bg") for btn in copy_buttons]  # Add the button background colors
     }
     with open("save_data.json", "w") as f:
         json.dump(data, f)
